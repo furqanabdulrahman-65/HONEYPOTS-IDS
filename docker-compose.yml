@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  honeypot-backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: honeypot-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DATABASE_URL=sqlite:///./honeypot.db
+    restart: always
